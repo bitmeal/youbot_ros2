@@ -1,0 +1,35 @@
+<launch>
+    <group ns="arm_1">
+        <include file="$(find youbot_moveit_config)/launch/planning_context.launch">
+            <arg name="load_robot_description" value="true"/>
+        </include>
+
+        <!--
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+            <param name="use_gui" value="false"/>
+            <rosparam param="source_list">[arm_1/joint_states]</rosparam>
+        </node>
+        /-->
+
+        <!-- Given the published joint states, publish tf for the robot links -->
+	<!--
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+	/-->
+
+        <!-- <include file="$(find youbot_moveit_config)/launch/move_group.launch" ns="arm_1"> -->
+        <!-- <remap from="/arm_1/joint_states" to="/joint_states" /> -->
+        <include file="$(find youbot_moveit_config)/launch/move_group.launch" >
+        <!--
+            <remap from="/arm_controller/follow_joint_trajectory/cancel" to="/arm_1/arm_controller/follow_joint_trajectory/cancel" />
+            <remap from="/arm_controller/follow_joint_trajectory/feedback" to="/arm_1/arm_controller/follow_joint_trajectory/feedback" />
+            <remap from="/arm_controller/follow_joint_trajectory/goal" to="/arm_1/arm_controller/follow_joint_trajectory/goal" />
+            <remap from="/arm_controller/follow_joint_trajectory/result" to="/arm_1/arm_controller/follow_joint_trajectory/result" />
+            <remap from="/arm_controller/follow_joint_trajectory/status" to="/arm_1/arm_controller/follow_joint_trajectory/status" />
+        -->
+        </include>
+
+        <include file="$(find youbot_moveit_config)/launch/moveit_rviz.launch">
+            <arg name="config" value="true" />
+        </include>
+    </group>
+</launch>

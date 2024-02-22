@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <ros2_control name="tmcm_1610_single_joint_kinematics" type="system">
+        <hardware>
+            <plugin>soem_driver/SOEMDriver</plugin>
+            <ec_interface>enx00e04c05e466</ec_interface>
+            <ec_cycle_us>1000</ec_cycle_us>
+            <ec_timeout_pd_us>200</ec_timeout_pd_us>
+            <ec_timeout_mbxrx_us>100</ec_timeout_mbxrx_us>
+            <ec_timeout_mbxtx_us>100</ec_timeout_mbxtx_us>
+
+            <diagnostics_cycle_ms>200</diagnostics_cycle_ms>
+            
+            <!-- KR-843 -->
+            <!-- 
+            <ec_slave name="gateway">
+                <alias>0</alias>
+                <position>1</position>
+            </ec_slave>
+            -->
+
+            <!-- TMCM-1610 -->
+            <ec_slave name="controller_0">
+                <alias>0</alias>
+                <position>2</position>
+                <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
+                <param name="torque_constant">0.0335</param>
+                <param name="homing_current_limit">1.0</param>
+            </ec_slave>
+            <ec_slave name="controller_1">
+                <alias>0</alias>
+                <position>3</position>
+                <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
+                <param name="torque_constant">0.0335</param>
+                <param name="homing_current_limit">0.5</param>
+            </ec_slave>
+            <ec_slave name="controller_2">
+                <alias>0</alias>
+                <position>4</position>
+                <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
+                <param name="torque_constant">0.0335</param>
+                <param name="homing_current_limit">1.0</param>
+            </ec_slave>
+            <ec_slave name="controller_3">
+                <alias>0</alias>
+                <position>5</position>
+                <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
+                <param name="torque_constant">0.051</param>
+                <param name="homing_current_limit">0.5</param>
+            </ec_slave>
+            <ec_slave name="controller_4">
+                <alias>0</alias>
+                <position>6</position>
+                <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
+                <param name="torque_constant">0.049</param>
+                <param name="homing_current_limit">0.5</param>
+            </ec_slave>
+        </hardware>
+
+        <joint name="joint_0">
+            <!-- <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+            <command_interface name="position"/>
+            <command_interface name="velocity"/> -->
+            <param name="ec_claims">controller_0/joint</param>
+        </joint>
+        <transmission name="transmission_0">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <!-- 
+            <actuator name="actuator_0" role="actuator_0"/>
+            <joint name="joint_0" role="joint_0">
+            -->
+            <actuator name="actuator_0"  role=""/>
+            <joint name="joint_0" role="">
+                <mechanical_reduction>156</mechanical_reduction>
+            </joint>
+        </transmission>
+
+        <joint name="joint_1">
+            <param name="ec_claims">controller_1/joint</param>
+        </joint>
+        <transmission name="transmission_1">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <actuator name="actuator_1"  role=""/>
+            <joint name="joint_1" role="">
+                <mechanical_reduction>156</mechanical_reduction>
+            </joint>
+        </transmission>
+
+        <joint name="joint_2">
+            <param name="ec_claims">controller_2/joint</param>
+        </joint>
+        <transmission name="transmission_2">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <actuator name="actuator_2"  role=""/>
+            <joint name="joint_2" role="">
+                <mechanical_reduction>100</mechanical_reduction>
+            </joint>
+        </transmission>
+
+        <joint name="joint_3">
+            <param name="ec_claims">controller_3/joint</param>
+        </joint>
+        <transmission name="transmission_3">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <actuator name="actuator_3"  role=""/>
+            <joint name="joint_3" role="">
+                <mechanical_reduction>71</mechanical_reduction>
+            </joint>
+        </transmission>
+
+        <joint name="joint_4">
+            <param name="ec_claims">controller_4/joint</param>
+        </joint>
+        <transmission name="transmission_4">
+            <plugin>transmission_interface/SimpleTransmission</plugin>
+            <actuator name="actuator_4"  role=""/>
+            <joint name="joint_4" role="">
+                <mechanical_reduction>71</mechanical_reduction>
+            </joint>
+        </transmission>
+    </ros2_control>
+</robot>

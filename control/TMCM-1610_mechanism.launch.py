@@ -50,28 +50,36 @@ def generate_launch_description():
 
     robot_description = {"robot_description": robot_description_content}
 
-    # control_node = Node(
-    #     package="controller_manager",
-    #     executable="ros2_control_node",
-    #     parameters=[robot_description, robot_controllers],
-    #     output="both",
-    #     arguments=['--ros-args', '--log-level', 'info']
-    # )
-
     control_node = Node(
-        package="soem_ethercat_grant",
-        executable="soem_ethercat_grant",
+        package="controller_manager",
+        executable="ros2_control_node",
+        exec_name="controller_manager",
         parameters=[robot_description, robot_controllers],
         output="both",
-        arguments=[
+        arguments=['--ros-args', '--log-level', 'info'],
+        prefix=[
             ExecutableInPackage(
-                executable="ros2_control_node",
-                package="controller_manager",
+                package="soem_ethercat_grant",
+                executable="soem_ethercat_grant",
             ),
-            '--ros-args',
-            '--log-level', 'info'
         ]
     )
+
+    # control_node = Node(
+    #     package="soem_ethercat_grant",
+    #     executable="soem_ethercat_grant",
+    #     exec_name="controller_manager",
+    #     parameters=[robot_description, robot_controllers],
+    #     output="both",
+    #     arguments=[
+    #         ExecutableInPackage(
+    #             executable="ros2_control_node",
+    #             package="controller_manager",
+    #         ),
+    #         '--ros-args',
+    #         '--log-level', 'info'
+    #     ]
+    # )
 
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
@@ -79,11 +87,17 @@ def generate_launch_description():
         arguments=["joint_state_broadcaster"] # , "--controller-manager", "/controller_manager"],
     )
 
-    # robot_controller_spawner = Node(
-    #     package="controller_manager",
-    #     executable="spawner",
-    #     arguments=["forward_velocity_controller"] # , "--controller-manager", "/controller_manager"],
-    # )
+    robot_controller_spawner_velocity = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["forward_velocity_controller"] # , "--controller-manager", "/controller_manager"],
+    )
+
+    robot_controller_spawner_position = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["forward_position_controller"] # , "--controller-manager", "/controller_manager"],
+    )
 
     # # robot_state_pub_node = Node(
     # #     package="robot_state_publisher",
@@ -92,19 +106,22 @@ def generate_launch_description():
     # #     parameters=[robot_description],
     # # )
 
-    # # Delay start of robot_controller after `joint_state_broadcaster`
-    # delay_robot_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
-    #     event_handler=OnProcessExit(
-    #         target_action=joint_state_broadcaster_spawner,
-    #         on_exit=[robot_controller_spawner],
-    #     )
-    # )
+    # Delay start of robot_controller after `joint_state_broadcaster`
+    delay_robot_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=joint_state_broadcaster_spawner,
+            on_exit=[
+                robot_controller_spawner_velocity,
+                # robot_controller_spawner_position
+            ],
+        )
+    )
 
     nodes = [
         control_node,
         # robot_state_pub_node,
         joint_state_broadcaster_spawner,
-        # delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
+        delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
     ]
 
     return LaunchDescription(nodes)
