@@ -2,7 +2,7 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <ros2_control name="tmcm_1610_single_joint_kinematics" type="system">
+    <ros2_control name="youbot_manipulator" type="system">
         <hardware>
             <plugin>soem_driver/SOEMDriver</plugin>
             <ec_interface>enx00e04c05e466</ec_interface>
@@ -59,39 +59,46 @@
             </ec_slave>
         </hardware>
 
-        <joint name="joint_0">
-            <!-- <state_interface name="position"/>
-            <state_interface name="velocity"/>
-            <state_interface name="effort"/>
-            <command_interface name="position"/>
-            <command_interface name="velocity"/> -->
-            <param name="ec_claims">controller_0/joint</param>
+        <joint name="actuator_0">
+            <param name="ec_claims">controller_0/drive</param>
         </joint>
         <transmission name="transmission_0">
             <plugin>transmission_interface/SimpleTransmission</plugin>
-            <!-- 
-            <actuator name="actuator_0" role="actuator_0"/>
-            <joint name="joint_0" role="joint_0">
-            -->
             <actuator name="actuator_0"  role=""/>
             <joint name="joint_0" role="">
-                <mechanical_reduction>156</mechanical_reduction>
+                <mechanical_reduction>-156</mechanical_reduction>
             </joint>
         </transmission>
+        <joint name="joint_0">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+            <command_interface name="position"/>
+            <command_interface name="velocity"/>
+            <command_interface name="effort"/>
+        </joint>
 
-        <joint name="joint_1">
-            <param name="ec_claims">controller_1/joint</param>
+        <joint name="actuator_1">
+            <param name="ec_claims">controller_1/drive</param>
         </joint>
         <transmission name="transmission_1">
             <plugin>transmission_interface/SimpleTransmission</plugin>
             <actuator name="actuator_1"  role=""/>
             <joint name="joint_1" role="">
-                <mechanical_reduction>156</mechanical_reduction>
+                <mechanical_reduction>-156</mechanical_reduction>
             </joint>
         </transmission>
+        <joint name="joint_1">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+            <command_interface name="position"/>
+            <command_interface name="velocity"/>
+            <command_interface name="effort"/>
+        </joint>
 
-        <joint name="joint_2">
-            <param name="ec_claims">controller_2/joint</param>
+        <joint name="actuator_2">
+            <param name="ec_claims">controller_2/drive</param>
         </joint>
         <transmission name="transmission_2">
             <plugin>transmission_interface/SimpleTransmission</plugin>
@@ -100,27 +107,52 @@
                 <mechanical_reduction>100</mechanical_reduction>
             </joint>
         </transmission>
+        <joint name="joint_2">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+            <command_interface name="position"/>
+            <command_interface name="velocity"/>
+            <command_interface name="effort"/>
+        </joint>
 
-        <joint name="joint_3">
-            <param name="ec_claims">controller_3/joint</param>
+        <joint name="actuator_3">
+            <param name="ec_claims">controller_3/drive</param>
         </joint>
         <transmission name="transmission_3">
             <plugin>transmission_interface/SimpleTransmission</plugin>
             <actuator name="actuator_3"  role=""/>
             <joint name="joint_3" role="">
-                <mechanical_reduction>71</mechanical_reduction>
+                <mechanical_reduction>-71</mechanical_reduction>
             </joint>
         </transmission>
+        <joint name="joint_3">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+            <command_interface name="position"/>
+            <command_interface name="velocity"/>
+            <command_interface name="effort"/>
+        </joint>
 
-        <joint name="joint_4">
-            <param name="ec_claims">controller_4/joint</param>
+        <joint name="actuator_4">
+            <param name="ec_claims">controller_4/drive</param>
         </joint>
         <transmission name="transmission_4">
             <plugin>transmission_interface/SimpleTransmission</plugin>
             <actuator name="actuator_4"  role=""/>
             <joint name="joint_4" role="">
-                <mechanical_reduction>71</mechanical_reduction>
+                <mechanical_reduction>-71</mechanical_reduction>
             </joint>
         </transmission>
+        <joint name="joint_4">
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+            <command_interface name="position"/>
+            <command_interface name="velocity"/>
+            <command_interface name="effort"/>
+        </joint>
+
     </ros2_control>
 </robot>
