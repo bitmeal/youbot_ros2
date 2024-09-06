@@ -7,19 +7,19 @@
   
   <!-- The following included files set up definitions of parts of the robot body -->
   <!-- misc common stuff? -->
-  <xacro:include filename="$(find youbot_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find youbot_ros2)/description/urdf/common.xacro" />
 
   <!-- materials for visualization -->
-  <xacro:include filename="$(find youbot_description)/urdf/materials.urdf.xacro" />
+  <xacro:include filename="$(find youbot_ros2)/description/urdf/materials.urdf.xacro" />
 
   <!-- youbot arm -->
-  <xacro:include filename="$(find youbot_description)/urdf/youbot_arm/arm.urdf.xacro" />
+  <xacro:include filename="$(find youbot_ros2)/description/urdf/youbot_arm/arm.urdf.xacro" />
 
   <!-- youbot arm -->
-  <xacro:include filename="$(find youbot_description)/urdf/youbot_gripper/gripper.urdf.xacro" />
+  <!-- <xacro:include filename="$(find youbot_ros2)/description/urdf/youbot_gripper/gripper.urdf.xacro" /> -->
  
   <!-- controller manager -->
-  <!-- <xacro:include filename="$(find youbot_description)/controller/ros_controller.urdf.xacro" /> -->
+  <xacro:include filename="$(find youbot_ros2)/control/arm.control.urdf.xacro" />
   
   <!-- Now we can start using the macros included above to define the actual youbot -->
 
@@ -31,7 +31,17 @@
        the origin block defines where the component is w.r.t its parent (in this case the parent 
        is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
-  <!-- foot for arm-->
+  <xacro:youbot_arm_control
+    name="arm"
+    ec_interface="enx00e04c05e466"
+    ec_cycle_us="1000"
+    ec_timeout_pd_us="500"
+    ec_timeout_mbxrx_us="200"
+    ec_timeout_mbxtx_us="200"
+    diagnostics_cycle_ms="500"
+  />
+
+  <!-- base for arm-->
   <link name="base_link">
     <inertial>
 		   <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -45,8 +55,10 @@
     <origin xyz="0.143 0 0.046" rpy="0 0 0" />
   </xacro:youbot_arm>
 
-  <xacro:youbot_gripper name="gripper" parent="arm_link_5">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:youbot_gripper>
+  <!--
+    <xacro:youbot_gripper name="gripper" parent="arm_link_5">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:youbot_gripper>
+  -->
 
 </robot>

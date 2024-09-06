@@ -7,11 +7,11 @@
             <plugin>soem_driver/SOEMDriver</plugin>
             <ec_interface>enx00e04c05e466</ec_interface>
             <ec_cycle_us>1000</ec_cycle_us>
-            <ec_timeout_pd_us>200</ec_timeout_pd_us>
-            <ec_timeout_mbxrx_us>100</ec_timeout_mbxrx_us>
-            <ec_timeout_mbxtx_us>100</ec_timeout_mbxtx_us>
+            <ec_timeout_pd_us>500</ec_timeout_pd_us>
+            <ec_timeout_mbxrx_us>200</ec_timeout_mbxrx_us>
+            <ec_timeout_mbxtx_us>200</ec_timeout_mbxtx_us>
 
-            <diagnostics_cycle_ms>200</diagnostics_cycle_ms>
+            <diagnostics_cycle_ms>500</diagnostics_cycle_ms>
             
             <!-- KR-843 -->
             <!-- 
@@ -29,6 +29,7 @@
                 <param name="torque_constant">0.0335</param>
                 <param name="homing_current_limit">1.0</param>
             </ec_slave>
+
             <ec_slave name="controller_1">
                 <alias>0</alias>
                 <position>3</position>
@@ -48,15 +49,16 @@
                 <position>5</position>
                 <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                 <param name="torque_constant">0.051</param>
-                <param name="homing_current_limit">0.5</param>
+                <param name="homing_current_limit">0.25</param>
             </ec_slave>
             <ec_slave name="controller_4">
                 <alias>0</alias>
                 <position>6</position>
                 <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                 <param name="torque_constant">0.049</param>
-                <param name="homing_current_limit">0.5</param>
+                <param name="homing_current_limit">0.25</param>
             </ec_slave>
+            
         </hardware>
 
         <joint name="actuator_0">

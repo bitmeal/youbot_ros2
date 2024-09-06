@@ -4,24 +4,29 @@ from launch.event_handlers import OnProcessExit
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare, ExecutableInPackage
 
 
 def generate_launch_description():
+    print(FindPackageShare("youbot_ros2").find("youbot_ros2"))
+
     # Get URDF via xacro
-    # robot_description_content = Command(
-    #     [
-    #         PathJoinSubstitution([FindExecutable(name="xacro")]),
-    #         " ",
-    #         PathJoinSubstitution(
-    #             [
-    #                 FindPackageShare("ros2_control_demo_example_1"),
-    #                 "urdf",
-    #                 "rrbot.urdf.xacro",
-    #             ]
-    #         ),
-    #     ]
-    # )
+    robot_description_content = Command(
+        [
+            PathJoinSubstitution([FindExecutable(name="xacro")]),
+            " ",
+            PathJoinSubstitution(
+                [
+                    FindPackageShare("youbot_ros2"),
+                    "description",
+                    "robots",
+                    "youbot_arm_only.urdf.xacro",
+                ]
+            ),
+        ]
+    )
+
     # robot_controllers = PathJoinSubstitution(
     #     [
     #         FindPackageShare("ros2_control_demo_example_1"),
@@ -30,25 +35,25 @@ def generate_launch_description():
     #     ]
     # )
 
-    robot_description_content = Command(
-        [
-            PathJoinSubstitution([FindExecutable(name="cat")]),
-            " ",
-            PathJoinSubstitution(
-                [
-                    "TMCM-1610_single_joint_mechanism.urdf",
-                ]
-            ),
-        ]
-    )
+    # robot_description_content = Command(
+    #     [
+    #         PathJoinSubstitution([FindExecutable(name="cat")]),
+    #         " ",
+    #         PathJoinSubstitution(
+    #             [
+    #                 "KUKA-YouBot-arm.urdf",
+    #             ]
+    #         ),
+    #     ]
+    # )
 
     robot_controllers = PathJoinSubstitution(
         [
-            "TMCM-1610_single_joint_mechanism_controllers.yaml",
+            "KUKA-YouBot-arm_controllers.yaml",
         ]
     )
 
-    robot_description = {"robot_description": robot_description_content}
+    robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
 
     control_node = Node(
         package="controller_manager",
@@ -56,12 +61,30 @@ def generate_launch_description():
         exec_name="controller_manager",
         parameters=[robot_description, robot_controllers],
         output="both",
-        arguments=['--ros-args', '--log-level', 'debug'],
+        arguments=[
+            '--ros-args',
+            '--log-level',
+            'info'
+        ],
         prefix=[
             ExecutableInPackage(
                 package="soem_ethercat_grant",
                 executable="soem_ethercat_grant",
             ),
+
+            # ' '.join([' ',
+            #     '/home/edgelord/DrMemory-Linux-2.6.0/bin64/drmemory',
+            #     '--',
+            # ])
+
+            # ' '.join([' ',
+            #     'valgrind',
+            #     # '--trace-children=yes',
+            #     '--tool=memcheck', '--leak-check=yes',
+            #     # '--tool=helgrind',
+            #     # '--tool=drd',
+            #     # '--log-file="valgrind-%p-%n.dat"',
+            # ]),
         ]
     )
 
@@ -84,7 +107,12 @@ def generate_launch_description():
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_state_broadcaster"] # , "--controller-manager", "/controller_manager"],
+        arguments=[
+            "joint_state_broadcaster",
+            # "--controller-manager",
+            # "/controller_manager",
+            # "--controller-manager-timeout=15"
+        ]
     )
 
     robot_controller_spawner_velocity = Node(
@@ -99,12 +127,12 @@ def generate_launch_description():
         arguments=["forward_position_controller"] # , "--controller-manager", "/controller_manager"],
     )
 
-    # # robot_state_pub_node = Node(
-    # #     package="robot_state_publisher",
-    # #     executable="robot_state_publisher",
-    # #     output="both",
-    # #     parameters=[robot_description],
-    # # )
+    robot_state_pub_node = Node(
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        output="both",
+        parameters=[robot_description],
+    )
 
     # Delay start of robot_controller after `joint_state_broadcaster`
     delay_robot_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
@@ -119,9 +147,10 @@ def generate_launch_description():
 
     nodes = [
         control_node,
-        # robot_state_pub_node,
+        robot_state_pub_node,
         joint_state_broadcaster_spawner,
-        # delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
+        # robot_controller_spawner_velocity,
+        delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
     ]
 
     return LaunchDescription(nodes)

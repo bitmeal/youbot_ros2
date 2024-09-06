@@ -1,0 +1,546 @@
+[INFO] [launch]: All log files can be found below /home/edgelord/.ros/log/2024-04-03-13-38-39-510314-ros-edge-01-159526
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [controller_manager-1]: process started with pid [159530]
+[INFO] [spawner-2]: process started with pid [159532]
+[controller_manager-1] ==159530== Memcheck, a memory error detector
+[controller_manager-1] ==159530== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+[controller_manager-1] ==159530== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+[controller_manager-1] ==159530== Command: /home/edgelord/ros2_ws/install/controller_manager/lib/controller_manager/ros2_control_node --ros-args --log-level debug --ros-args --params-file /tmp/launch_params_d1sa6acz --params-file TMCM-1610_single_joint_mechanism_controllers.yaml
+[controller_manager-1] ==159530==
+[spawner-2] [INFO] [1712144322.128208929] [spawner_joint_state_broadcaster]: Waiting for '/controller_manager' node to exist
+[spawner-2] [INFO] [1712144324.144190277] [spawner_joint_state_broadcaster]: Waiting for '/controller_manager' node to exist
+[controller_manager-1] [DEBUG] [1712144324.757004323] [rclcpp]: signal handler installed
+[controller_manager-1] [DEBUG] [1712144324.819527164] [rcl]: Initializing wait set with '0' subscriptions, '2' guard conditions, '0' timers, '0' clients, '0' services
+[controller_manager-1] [DEBUG] [1712144324.780566870] [rclcpp]: deferred_signal_handler(): waiting for SIGINT/SIGTERM or uninstall
+--
+[controller_manager-1] [DEBUG] [1712144330.791590612] [map::at DEBUG]: (before activate) state interface available: joint_4/position
+[controller_manager-1] [DEBUG] [1712144330.791739778] [map::at DEBUG]: (before activate) state interface available: joint_4/velocity
+[controller_manager-1] [DEBUG] [1712144330.791888971] [map::at DEBUG]: (before activate) state interface available: joint_4/effort
+[controller_manager-1] [INFO] [1712144330.792544430] [resource_manager]: 'activate' hardware 'youbot_manipulator'
+[controller_manager-1] [INFO] [1712144330.794287116] [soem_master]: requesting OP state for all slaves
+[controller_manager-1] ==159530== Syscall param socketcall.sendto(msg) points to uninitialised byte(s)
+[controller_manager-1] ==159530==    at 0x50E18FE: __libc_send (send.c:28)
+[controller_manager-1] ==159530==    by 0x50E18FE: send (send.c:23)
+[controller_manager-1] ==159530==    by 0x1063CB85: ecx_outframe (nicdrv.c:285)
+[controller_manager-1] ==159530==    by 0x1063CBE6: ecx_outframe_red (nicdrv.c:309)
+[controller_manager-1] ==159530==    by 0x10638293: ecx_main_send_processdata (ethercatmain.c:1860)
+[controller_manager-1] ==159530==    by 0x1062DBE6: soem_master::SOEMMaster::bus_up_OP() (soem_master.cpp:274)
+[controller_manager-1] ==159530==    by 0x1062E134: soem_master::SOEMMaster::run(std::chrono::duration<long, std::ratio<1l, 1000000l> >) (soem_master.cpp:533)
+[controller_manager-1] ==159530==    by 0x105D0A5A: soem_driver::SOEMDriver::on_activate(rclcpp_lifecycle::State const&) (soem_driver.cpp:856)
+[controller_manager-1] ==159530==    by 0x532383F: hardware_interface::System::activate() (system.cpp:126)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53117EB: bool hardware_interface::ResourceStorage::activate_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:323)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==  Address 0x101b1b38 is 112,120 bytes inside a block of size 159,872 alloc'd
+[controller_manager-1] ==159530==    at 0x484B4C0: operator new(unsigned long, std::align_val_t) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x10620489: class_loader::impl::MetaObject<soem_driver::SOEMDriver, hardware_interface::SystemInterface>::create() const (meta_object.hpp:218)
+[controller_manager-1] ==159530==    by 0x5301EBD: hardware_interface::SystemInterface* class_loader::impl::createInstance<hardware_interface::SystemInterface>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, class_loader::ClassLoader*) (class_loader_core.hpp:366)
+[controller_manager-1] ==159530==    by 0x5302403: pluginlib::ClassLoader<hardware_interface::SystemInterface>::createUnmanagedInstance(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (class_loader_imp.hpp:205)
+[controller_manager-1] ==159530==    by 0x531BEB9: void hardware_interface::ResourceStorage::load_hardware<hardware_interface::System, hardware_interface::SystemInterface>(hardware_interface::HardwareInfo const&, pluginlib::ClassLoader<hardware_interface::SystemInterface>&, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) (resource_manager.cpp:100)
+[controller_manager-1] ==159530==    by 0x531C7E8: auto hardware_interface::ResourceStorage::load_and_initialize_system(hardware_interface::HardwareInfo const&)::{lambda(auto:1&)#1}::operator()<std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (resource_manager.cpp:608)
+[controller_manager-1] ==159530==    by 0x52EFA10: load_and_initialize_system (resource_manager.cpp:629)
+[controller_manager-1] ==159530==    by 0x52EFA10: hardware_interface::ResourceManager::load_urdf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool, bool) (resource_manager.cpp:818)
+[controller_manager-1] ==159530==    by 0x4A1D5E6: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:373)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==    by 0x10DB59: void __gnu_cxx::new_allocator<controller_manager::ControllerManager>::construct<controller_manager::ControllerManager, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(controller_manager::ControllerManager*, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [clone .isra.0] (new_allocator.h:162)
+[controller_manager-1] ==159530==    by 0x10DEA3: construct<controller_manager::ControllerManager, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&> (alloc_traits.h:516)
+[controller_manager-1] ==159530==    by 0x10DEA3: _Sp_counted_ptr_inplace<std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&> (shared_ptr_base.h:519)
+[controller_manager-1] ==159530==    by 0x10DEA3: __shared_count<controller_manager::ControllerManager, std::allocator<controller_manager::ControllerManager>, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&> (shared_ptr_base.h:650)
+[controller_manager-1] ==159530==    by 0x10DEA3: std::__shared_ptr<controller_manager::ControllerManager, (__gnu_cxx::_Lock_policy)2>::__shared_ptr<std::allocator<controller_manager::ControllerManager>, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::_Sp_alloc_shared_tag<std::allocator<controller_manager::ControllerManager> >, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (shared_ptr_base.h:1342)
+[controller_manager-1] ==159530==    by 0x10C871: shared_ptr<std::allocator<controller_manager::ControllerManager>, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&> (shared_ptr.h:409)
+[controller_manager-1] ==159530==    by 0x10C871: allocate_shared<controller_manager::ControllerManager, std::allocator<controller_manager::ControllerManager>, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&> (shared_ptr.h:863)
+[controller_manager-1] ==159530==    by 0x10C871: make_shared<controller_manager::ControllerManager, std::shared_ptr<rclcpp::Executor>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&> (shared_ptr.h:879)
+[controller_manager-1] ==159530==    by 0x10C871: main (ros2_control_node.cpp:44)
+[controller_manager-1] ==159530==
+[controller_manager-1] [DEBUG] [1712144330.794500779] [rcl]: Calling timer
+[controller_manager-1] [INFO] [1712144330.806016525] [soem_master]: Slave   1 [OP     ] KR-843 (No error)
+[controller_manager-1] [INFO] [1712144330.806234424] [soem_master]: Slave   2 [OP     ] TMCM-1610 (No error)
+[controller_manager-1] [INFO] [1712144330.806397524] [soem_master]: Slave   3 [OP     ] TMCM-1610 (No error)
+[controller_manager-1] [INFO] [1712144330.806561200] [soem_master]: Slave   4 [OP     ] TMCM-1610 (No error)
+--
+[controller_manager-1] [INFO] [1712144331.220978086] [controller_manager]: update rate is 10 Hz
+[controller_manager-1] [DEBUG] [1712144331.346791956] [rcl]: Calling timer
+[controller_manager-1] [DEBUG] [1712144331.353717837] [rcl]: Subscription taking message
+[controller_manager-1] [DEBUG] [1712144331.354069099] [rcl]: Subscription take succeeded: true
+[controller_manager-1] [DEBUG] [1712144331.363869196] [rcl]: Service server taking service request
+[controller_manager-1] ==159530== Thread 18:
+[controller_manager-1] ==159530== Use of uninitialised value of size 8
+[controller_manager-1] ==159530==    at 0x4E9C92B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x4E9D0A9: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x4EAB3C9: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x106F665B: operator<< (ostream:185)
+[controller_manager-1] ==159530==    by 0x106F665B: add<short unsigned int> (diagnostic_status_wrapper.hpp:227)
+[controller_manager-1] ==159530==    by 0x106F665B: soem_slave_modules::TrinamicTMCM1610::build_diagnostics(unsigned int) (tmcm1610.cpp:974)
+[controller_manager-1] ==159530==    by 0x106F717C: soem_slave_modules::TrinamicTMCM1610::read(rclcpp::Time const&, rclcpp::Duration const&) (tmcm1610.cpp:1019)
+[controller_manager-1] ==159530==    by 0x105D2CD2: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:883)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Conditional jump or move depends on uninitialised value(s)
+[controller_manager-1] ==159530==    at 0x4E9C93D: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x4E9D0A9: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x4EAB3C9: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x106F665B: operator<< (ostream:185)
+[controller_manager-1] ==159530==    by 0x106F665B: add<short unsigned int> (diagnostic_status_wrapper.hpp:227)
+[controller_manager-1] ==159530==    by 0x106F665B: soem_slave_modules::TrinamicTMCM1610::build_diagnostics(unsigned int) (tmcm1610.cpp:974)
+[controller_manager-1] ==159530==    by 0x106F717C: soem_slave_modules::TrinamicTMCM1610::read(rclcpp::Time const&, rclcpp::Duration const&) (tmcm1610.cpp:1019)
+[controller_manager-1] ==159530==    by 0x105D2CD2: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:883)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Use of uninitialised value of size 8
+[controller_manager-1] ==159530==    at 0x50142EB: _itoa_word (_itoa.c:177)
+[controller_manager-1] ==159530==    by 0x502FABD: __vfprintf_internal (vfprintf-internal.c:1516)
+[controller_manager-1] ==159530==    by 0x5042499: __vsnprintf_internal (vsnprintf.c:114)
+[controller_manager-1] ==159530==    by 0x106F5412: vsnprintf (stdio2.h:85)
+[controller_manager-1] ==159530==    by 0x106F5412: diagnostic_updater::DiagnosticStatusWrapper::addf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*, ...) (diagnostic_status_wrapper.hpp:288)
+[controller_manager-1] ==159530==    by 0x106F6839: soem_slave_modules::TrinamicTMCM1610::build_diagnostics(unsigned int) (tmcm1610.cpp:975)
+[controller_manager-1] ==159530==    by 0x106F717C: soem_slave_modules::TrinamicTMCM1610::read(rclcpp::Time const&, rclcpp::Duration const&) (tmcm1610.cpp:1019)
+[controller_manager-1] ==159530==    by 0x105D2CD2: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:883)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Conditional jump or move depends on uninitialised value(s)
+[controller_manager-1] ==159530==    at 0x50142FC: _itoa_word (_itoa.c:177)
+[controller_manager-1] ==159530==    by 0x502FABD: __vfprintf_internal (vfprintf-internal.c:1516)
+[controller_manager-1] ==159530==    by 0x5042499: __vsnprintf_internal (vsnprintf.c:114)
+[controller_manager-1] ==159530==    by 0x106F5412: vsnprintf (stdio2.h:85)
+[controller_manager-1] ==159530==    by 0x106F5412: diagnostic_updater::DiagnosticStatusWrapper::addf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*, ...) (diagnostic_status_wrapper.hpp:288)
+[controller_manager-1] ==159530==    by 0x106F6839: soem_slave_modules::TrinamicTMCM1610::build_diagnostics(unsigned int) (tmcm1610.cpp:975)
+[controller_manager-1] ==159530==    by 0x106F717C: soem_slave_modules::TrinamicTMCM1610::read(rclcpp::Time const&, rclcpp::Duration const&) (tmcm1610.cpp:1019)
+[controller_manager-1] ==159530==    by 0x105D2CD2: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:883)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Conditional jump or move depends on uninitialised value(s)
+[controller_manager-1] ==159530==    at 0x50305C3: __vfprintf_internal (vfprintf-internal.c:1516)
+[controller_manager-1] ==159530==    by 0x5042499: __vsnprintf_internal (vsnprintf.c:114)
+[controller_manager-1] ==159530==    by 0x106F5412: vsnprintf (stdio2.h:85)
+[controller_manager-1] ==159530==    by 0x106F5412: diagnostic_updater::DiagnosticStatusWrapper::addf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*, ...) (diagnostic_status_wrapper.hpp:288)
+[controller_manager-1] ==159530==    by 0x106F6839: soem_slave_modules::TrinamicTMCM1610::build_diagnostics(unsigned int) (tmcm1610.cpp:975)
+[controller_manager-1] ==159530==    by 0x106F717C: soem_slave_modules::TrinamicTMCM1610::read(rclcpp::Time const&, rclcpp::Duration const&) (tmcm1610.cpp:1019)
+[controller_manager-1] ==159530==    by 0x105D2CD2: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:883)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Conditional jump or move depends on uninitialised value(s)
+[controller_manager-1] ==159530==    at 0x502FC05: __vfprintf_internal (vfprintf-internal.c:1516)
+[controller_manager-1] ==159530==    by 0x5042499: __vsnprintf_internal (vsnprintf.c:114)
+[controller_manager-1] ==159530==    by 0x106F5412: vsnprintf (stdio2.h:85)
+[controller_manager-1] ==159530==    by 0x106F5412: diagnostic_updater::DiagnosticStatusWrapper::addf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*, ...) (diagnostic_status_wrapper.hpp:288)
+[controller_manager-1] ==159530==    by 0x106F6839: soem_slave_modules::TrinamicTMCM1610::build_diagnostics(unsigned int) (tmcm1610.cpp:975)
+[controller_manager-1] ==159530==    by 0x106F717C: soem_slave_modules::TrinamicTMCM1610::read(rclcpp::Time const&, rclcpp::Duration const&) (tmcm1610.cpp:1019)
+[controller_manager-1] ==159530==    by 0x105D2CD2: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:883)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Invalid write of size 8
+[controller_manager-1] ==159530==    at 0x4851F10: memcpy@GLIBC_2.2.5 (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x105D2A68: __copy_m<std::byte> (stl_algobase.h:431)
+[controller_manager-1] ==159530==    by 0x105D2A68: __copy_move_a2<false, std::byte*, std::byte*> (stl_algobase.h:495)
+[controller_manager-1] ==159530==    by 0x105D2A68: __copy_move_a1<false, std::byte*, std::byte*> (stl_algobase.h:522)
+[controller_manager-1] ==159530==    by 0x105D2A68: __copy_move_a<false, __gnu_cxx::__normal_iterator<std::byte*, std::vector<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:529)
+[controller_manager-1] ==159530==    by 0x105D2A68: copy<__gnu_cxx::__normal_iterator<std::byte*, std::vector<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:620)
+[controller_manager-1] ==159530==    by 0x105D2A68: __copy_n<__gnu_cxx::__normal_iterator<std::byte*, std::vector<std::byte> >, long unsigned int, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algo.h:725)
+[controller_manager-1] ==159530==    by 0x105D2A68: copy_n<__gnu_cxx::__normal_iterator<std::byte*, std::vector<std::byte> >, long unsigned int, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algo.h:757)
+[controller_manager-1] ==159530==    by 0x105D2A68: operator()<std::tuple<std::vector<std::byte, std::allocator<std::byte> >, bool, bool> > (soem_driver.cpp:910)
+[controller_manager-1] ==159530==    by 0x105D2A68: consume_one<soem_driver::SOEMDriver::write(const rclcpp::Time&, const rclcpp::Duration&)::<lambda(auto:82)> > (spsc_queue.hpp:189)
+[controller_manager-1] ==159530==    by 0x105D2A68: consume_one<soem_driver::SOEMDriver::write(const rclcpp::Time&, const rclcpp::Duration&)::<lambda(auto:82)> > (spsc_queue.hpp:604)
+[controller_manager-1] ==159530==    by 0x105D2A68: consume_one<soem_driver::SOEMDriver::write(const rclcpp::Time&, const rclcpp::Duration&)::<lambda(auto:82)> > (spsc_queue.hpp:957)
+[controller_manager-1] ==159530==    by 0x105D2A68: soem_driver::SOEMDriver::write(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:907)
+[controller_manager-1] ==159530==    by 0x53231EF: hardware_interface::System::write(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:250)
+[controller_manager-1] ==159530==    by 0x52EEE64: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1445)
+[controller_manager-1] ==159530==    by 0x52EEE64: hardware_interface::ResourceManager::write(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1461)
+[controller_manager-1] ==159530==    by 0x4A19FF2: controller_manager::ControllerManager::write(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2151)
+[controller_manager-1] ==159530==    by 0x10D03B: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:80)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==    by 0x50DFA03: clone (clone.S:100)
+[controller_manager-1] ==159530==  Address 0x10f36030 is 0 bytes inside a block of size 8 free'd
+[controller_manager-1] ==159530==    at 0x484DB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (new_allocator.h:145)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (allocator.h:199)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (alloc_traits.h:496)
+[controller_manager-1] ==159530==    by 0x1062CA05: _M_deallocate (stl_vector.h:354)
+[controller_manager-1] ==159530==    by 0x1062CA05: ~_Vector_base (stl_vector.h:335)
+[controller_manager-1] ==159530==    by 0x1062CA05: ~vector (stl_vector.h:683)
+[controller_manager-1] ==159530==    by 0x1062CA05: soem_master::SOEMMaster::getSMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:604)
+[controller_manager-1] ==159530==    by 0x1062ED29: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==  Block was alloc'd at
+[controller_manager-1] ==159530==    at 0x484B013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (new_allocator.h:127)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (allocator.h:185)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (alloc_traits.h:464)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_allocate (stl_vector.h:346)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_allocate (stl_vector.h:343)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_create_storage (stl_vector.h:361)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _Vector_base (stl_vector.h:305)
+[controller_manager-1] ==159530==    by 0x1062C9DD: vector (stl_vector.h:555)
+[controller_manager-1] ==159530==    by 0x1062C9DD: soem_master::SOEMMaster::getSMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:602)
+[controller_manager-1] ==159530==    by 0x1062ED29: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==
+[controller_manager-1] [DEBUG] [1712144331.435682579] [rcl]: Service take request succeeded: true
+[controller_manager-1] ==159530== Thread 17:
+[controller_manager-1] ==159530== Invalid read of size 1
+[controller_manager-1] ==159530==    at 0x4851F90: memcpy@GLIBC_2.2.5 (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_m<std::byte> (stl_algobase.h:431)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_move_a2<false, std::byte*, std::byte*> (stl_algobase.h:495)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_move_a1<false, std::byte*, std::byte*> (stl_algobase.h:522)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_move_a<false, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:529)
+[controller_manager-1] ==159530==    by 0x106309CF: copy<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:620)
+[controller_manager-1] ==159530==    by 0x106309CF: soem_master::SOEMMaster::cyclic_task(std::chrono::duration<long, std::ratio<1l, 1000000l> >) (soem_master.cpp:423)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==    by 0x50DFA03: clone (clone.S:100)
+[controller_manager-1] ==159530==  Address 0x10f36030 is 0 bytes inside a block of size 8 free'd
+[controller_manager-1] ==159530==    at 0x484DB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (new_allocator.h:145)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (allocator.h:199)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (alloc_traits.h:496)
+[controller_manager-1] ==159530==    by 0x1062CA05: _M_deallocate (stl_vector.h:354)
+[controller_manager-1] ==159530==    by 0x1062CA05: ~_Vector_base (stl_vector.h:335)
+[controller_manager-1] ==159530==    by 0x1062CA05: ~vector (stl_vector.h:683)
+[controller_manager-1] ==159530==    by 0x1062CA05: soem_master::SOEMMaster::getSMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:604)
+[controller_manager-1] ==159530==    by 0x1062ED29: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==  Block was alloc'd at
+[controller_manager-1] ==159530==    at 0x484B013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (new_allocator.h:127)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (allocator.h:185)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (alloc_traits.h:464)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_allocate (stl_vector.h:346)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_allocate (stl_vector.h:343)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_create_storage (stl_vector.h:361)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _Vector_base (stl_vector.h:305)
+[controller_manager-1] ==159530==    by 0x1062C9DD: vector (stl_vector.h:555)
+[controller_manager-1] ==159530==    by 0x1062C9DD: soem_master::SOEMMaster::getSMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:602)
+[controller_manager-1] ==159530==    by 0x1062ED29: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Invalid read of size 1
+[controller_manager-1] ==159530==    at 0x4851F9D: memcpy@GLIBC_2.2.5 (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_m<std::byte> (stl_algobase.h:431)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_move_a2<false, std::byte*, std::byte*> (stl_algobase.h:495)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_move_a1<false, std::byte*, std::byte*> (stl_algobase.h:522)
+[controller_manager-1] ==159530==    by 0x106309CF: __copy_move_a<false, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:529)
+[controller_manager-1] ==159530==    by 0x106309CF: copy<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:620)
+[controller_manager-1] ==159530==    by 0x106309CF: soem_master::SOEMMaster::cyclic_task(std::chrono::duration<long, std::ratio<1l, 1000000l> >) (soem_master.cpp:423)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==    by 0x50DFA03: clone (clone.S:100)
+[controller_manager-1] ==159530==  Address 0x10f36032 is 2 bytes inside a block of size 8 free'd
+[controller_manager-1] ==159530==    at 0x484DB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (new_allocator.h:145)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (allocator.h:199)
+[controller_manager-1] ==159530==    by 0x1062CA05: deallocate (alloc_traits.h:496)
+[controller_manager-1] ==159530==    by 0x1062CA05: _M_deallocate (stl_vector.h:354)
+[controller_manager-1] ==159530==    by 0x1062CA05: ~_Vector_base (stl_vector.h:335)
+[controller_manager-1] ==159530==    by 0x1062CA05: ~vector (stl_vector.h:683)
+[controller_manager-1] ==159530==    by 0x1062CA05: soem_master::SOEMMaster::getSMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:604)
+[controller_manager-1] ==159530==    by 0x1062ED29: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==  Block was alloc'd at
+[controller_manager-1] ==159530==    at 0x484B013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (new_allocator.h:127)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (allocator.h:185)
+[controller_manager-1] ==159530==    by 0x1062C9DD: allocate (alloc_traits.h:464)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_allocate (stl_vector.h:346)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_allocate (stl_vector.h:343)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _M_create_storage (stl_vector.h:361)
+[controller_manager-1] ==159530==    by 0x1062C9DD: _Vector_base (stl_vector.h:305)
+[controller_manager-1] ==159530==    by 0x1062C9DD: vector (stl_vector.h:555)
+[controller_manager-1] ==159530==    by 0x1062C9DD: soem_master::SOEMMaster::getSMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:602)
+[controller_manager-1] ==159530==    by 0x1062ED29: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==
+[controller_manager-1] [DEBUG] [1712144331.441483547] [rcl]: Subscription taking message
+[controller_manager-1] [DEBUG] [1712144331.452333428] [rcl]: Subscription take succeeded: true
+[controller_manager-1] [DEBUG] [1712144331.453543822] [rcl]: Calling timer
+[controller_manager-1] [DEBUG] [1712144331.456529823] [rcl]: Subscription taking message
+[controller_manager-1] [DEBUG] [1712144331.464766073] [rcl]: Subscription take succeeded: true
+--
+[controller_manager-1] [DEBUG] [1712144331.503865401] [rcl]: Subscription take succeeded: true
+[controller_manager-1] [DEBUG] [1712144331.504268589] [rcl]: Subscription taking message
+[controller_manager-1] [DEBUG] [1712144331.504515935] [rcl]: Subscription take succeeded: true
+[controller_manager-1] [DEBUG] [1712144331.504895252] [rcl]: Subscription taking message
+[controller_manager-1] [DEBUG] [1712144331.505154102] [rcl]: Subscription take succeeded: true
+[controller_manager-1] ==159530== Invalid write of size 8
+[controller_manager-1] ==159530==    at 0x4851F10: memcpy@GLIBC_2.2.5 (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x10630BD2: __copy_m<std::byte> (stl_algobase.h:431)
+[controller_manager-1] ==159530==    by 0x10630BD2: __copy_move_a2<false, std::byte*, std::byte*> (stl_algobase.h:495)
+[controller_manager-1] ==159530==    by 0x10630BD2: __copy_move_a1<false, std::byte*, std::byte*> (stl_algobase.h:522)
+[controller_manager-1] ==159530==    by 0x10630BD2: __copy_move_a<false, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:529)
+[controller_manager-1] ==159530==    by 0x10630BD2: copy<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algobase.h:620)
+[controller_manager-1] ==159530==    by 0x10630BD2: __copy_n<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, long unsigned int, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algo.h:725)
+[controller_manager-1] ==159530==    by 0x10630BD2: copy_n<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, long unsigned int, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_algo.h:757)
+[controller_manager-1] ==159530==    by 0x10630BD2: soem_master::SOEMMaster::cyclic_task(std::chrono::duration<long, std::ratio<1l, 1000000l> >) (soem_master.cpp:443)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==    by 0x50DFA03: clone (clone.S:100)
+[controller_manager-1] ==159530==  Address 0x10f36360 is 0 bytes inside a block of size 8 free'd
+[controller_manager-1] ==159530==    at 0x484DB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CAA5: deallocate (new_allocator.h:145)
+[controller_manager-1] ==159530==    by 0x1062CAA5: deallocate (allocator.h:199)
+[controller_manager-1] ==159530==    by 0x1062CAA5: deallocate (alloc_traits.h:496)
+[controller_manager-1] ==159530==    by 0x1062CAA5: _M_deallocate (stl_vector.h:354)
+[controller_manager-1] ==159530==    by 0x1062CAA5: ~_Vector_base (stl_vector.h:335)
+[controller_manager-1] ==159530==    by 0x1062CAA5: ~vector (stl_vector.h:683)
+[controller_manager-1] ==159530==    by 0x1062CAA5: soem_master::SOEMMaster::getRMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:609)
+[controller_manager-1] ==159530==    by 0x1062EC8D: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==  Block was alloc'd at
+[controller_manager-1] ==159530==    at 0x484B013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CA7D: allocate (new_allocator.h:127)
+[controller_manager-1] ==159530==    by 0x1062CA7D: allocate (allocator.h:185)
+[controller_manager-1] ==159530==    by 0x1062CA7D: allocate (alloc_traits.h:464)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _M_allocate (stl_vector.h:346)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _M_allocate (stl_vector.h:343)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _M_create_storage (stl_vector.h:361)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _Vector_base (stl_vector.h:305)
+[controller_manager-1] ==159530==    by 0x1062CA7D: vector (stl_vector.h:555)
+[controller_manager-1] ==159530==    by 0x1062CA7D: soem_master::SOEMMaster::getRMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:607)
+[controller_manager-1] ==159530==    by 0x1062EC8D: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Thread 18:
+[controller_manager-1] ==159530== Invalid read of size 8
+[controller_manager-1] ==159530==    at 0x4851F0D: memcpy@GLIBC_2.2.5 (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x105D2DEA: __copy_m<std::byte> (stl_algobase.h:431)
+[controller_manager-1] ==159530==    by 0x105D2DEA: __copy_move_a2<false, std::byte*, std::byte*> (stl_algobase.h:495)
+[controller_manager-1] ==159530==    by 0x105D2DEA: __copy_move_a1<false, std::byte*, std::byte*> (stl_algobase.h:522)
+[controller_manager-1] ==159530==    by 0x105D2DEA: __copy_move_a<false, __gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, std::byte*> (stl_algobase.h:529)
+[controller_manager-1] ==159530==    by 0x105D2DEA: copy<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, std::byte*> (stl_algobase.h:620)
+[controller_manager-1] ==159530==    by 0x105D2DEA: __uninit_copy<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, std::byte*> (stl_uninitialized.h:110)
+[controller_manager-1] ==159530==    by 0x105D2DEA: uninitialized_copy<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, std::byte*> (stl_uninitialized.h:151)
+[controller_manager-1] ==159530==    by 0x105D2DEA: __uninitialized_copy_a<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> >, std::byte*, std::byte> (stl_uninitialized.h:333)
+[controller_manager-1] ==159530==    by 0x105D2DEA: _M_range_initialize<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_vector.h:1585)
+[controller_manager-1] ==159530==    by 0x105D2DEA: vector<__gnu_cxx::__normal_iterator<std::byte*, std::span<std::byte> > > (stl_vector.h:657)
+[controller_manager-1] ==159530==    by 0x105D2DEA: soem_driver::SOEMDriver::read(rclcpp::Time const&, rclcpp::Duration const&) (soem_driver.cpp:876)
+[controller_manager-1] ==159530==    by 0x532313F: hardware_interface::System::read(rclcpp::Time const&, rclcpp::Duration const&) (system.cpp:228)
+[controller_manager-1] ==159530==    by 0x52EE8E4: operator()<std::vector<hardware_interface::System> > (resource_manager.cpp:1404)
+[controller_manager-1] ==159530==    by 0x52EE8E4: hardware_interface::ResourceManager::read(rclcpp::Time const&, rclcpp::Duration const&) (resource_manager.cpp:1428)
+[controller_manager-1] ==159530==    by 0x4A19D62: controller_manager::ControllerManager::read(rclcpp::Time const&, rclcpp::Duration const&) (controller_manager.cpp:2035)
+[controller_manager-1] ==159530==    by 0x10CFE5: main::{lambda()#1}::operator()() const (ros2_control_node.cpp:78)
+[controller_manager-1] ==159530==    by 0x4E4A252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+[controller_manager-1] ==159530==    by 0x504EAC2: start_thread (pthread_create.c:442)
+[controller_manager-1] ==159530==    by 0x50DFA03: clone (clone.S:100)
+[controller_manager-1] ==159530==  Address 0x10f35fe0 is 0 bytes inside a block of size 8 free'd
+[controller_manager-1] ==159530==    at 0x484DB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CAA5: deallocate (new_allocator.h:145)
+[controller_manager-1] ==159530==    by 0x1062CAA5: deallocate (allocator.h:199)
+[controller_manager-1] ==159530==    by 0x1062CAA5: deallocate (alloc_traits.h:496)
+[controller_manager-1] ==159530==    by 0x1062CAA5: _M_deallocate (stl_vector.h:354)
+[controller_manager-1] ==159530==    by 0x1062CAA5: ~_Vector_base (stl_vector.h:335)
+[controller_manager-1] ==159530==    by 0x1062CAA5: ~vector (stl_vector.h:683)
+[controller_manager-1] ==159530==    by 0x1062CAA5: soem_master::SOEMMaster::getRMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:609)
+[controller_manager-1] ==159530==    by 0x1062EC8D: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==  Block was alloc'd at
+[controller_manager-1] ==159530==    at 0x484B013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+[controller_manager-1] ==159530==    by 0x1062CA7D: allocate (new_allocator.h:127)
+[controller_manager-1] ==159530==    by 0x1062CA7D: allocate (allocator.h:185)
+[controller_manager-1] ==159530==    by 0x1062CA7D: allocate (alloc_traits.h:464)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _M_allocate (stl_vector.h:346)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _M_allocate (stl_vector.h:343)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _M_create_storage (stl_vector.h:361)
+[controller_manager-1] ==159530==    by 0x1062CA7D: _Vector_base (stl_vector.h:305)
+[controller_manager-1] ==159530==    by 0x1062CA7D: vector (stl_vector.h:555)
+[controller_manager-1] ==159530==    by 0x1062CA7D: soem_master::SOEMMaster::getRMbx(soem_master::SOEMEcSlaveInfo) (soem_master.cpp:607)
+[controller_manager-1] ==159530==    by 0x1062EC8D: soem_master::SOEMMaster::start_bus(unsigned long) (soem_master.cpp:240)
+[controller_manager-1] ==159530==    by 0x105D79E0: soem_driver::SOEMDriver::on_configure(rclcpp_lifecycle::State const&) (soem_driver.cpp:618)
+[controller_manager-1] ==159530==    by 0x532328E: hardware_interface::System::configure() (system.cpp:62)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke_impl<const rclcpp_lifecycle::State&, const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __invoke<const rclcpp_lifecycle::State& (hardware_interface::System::*&)(), hardware_interface::System*&> (invoke.h:96)
+[controller_manager-1] ==159530==    by 0x52EC1B0: __call<const rclcpp_lifecycle::State&, 0> (functional:420)
+[controller_manager-1] ==159530==    by 0x52EC1B0: operator()<> (functional:503)
+[controller_manager-1] ==159530==    by 0x52EC1B0: auto hardware_interface::trigger_and_print_hardware_state_transition::{lambda(auto:1, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<char> const&, unsigned char const&)#1}::operator()<std::_Bind<rclcpp_lifecycle::State const& (hardware_interface::System::*(std::_Bind*))()> >(hardware_interface::trigger_and_print_hardware_state_transition, std::allocator<char>, std::allocator<char> const, unsigned char const) const [clone .isra.0] (resource_manager.cpp:51)
+[controller_manager-1] ==159530==    by 0x53161BE: bool hardware_interface::ResourceStorage::configure_hardware<hardware_interface::System>(hardware_interface::System&) (resource_manager.cpp:143)
+[controller_manager-1] ==159530==    by 0x5319BEA: bool hardware_interface::ResourceStorage::set_component_state<hardware_interface::System>(hardware_interface::System&, rclcpp_lifecycle::State const&) (resource_manager.cpp:421)
+[controller_manager-1] ==159530==    by 0x52E47E1: auto hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&)::{lambda(auto:1, auto:2&)#1}::operator()<std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> > >(std::_Bind<bool (hardware_interface::ResourceStorage::*(hardware_interface::ResourceStorage*, std::_Placeholder<1>, std::_Placeholder<2>))(hardware_interface::System&, rclcpp_lifecycle::State const&)>, std::vector<hardware_interface::System, std::allocator<hardware_interface::System> >&) const (invoke.h:74)
+[controller_manager-1] ==159530==    by 0x52EBE5F: hardware_interface::ResourceManager::set_component_state(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp_lifecycle::State&) (resource_manager.cpp:1366)
+[controller_manager-1] ==159530==    by 0x4A1DB49: controller_manager::ControllerManager::init_resource_manager(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (controller_manager.cpp:465)
+[controller_manager-1] ==159530==    by 0x4A1E77C: controller_manager::ControllerManager::ControllerManager(std::shared_ptr<rclcpp::Executor>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, rclcpp::NodeOptions const&) (controller_manager.cpp:288)
+[controller_manager-1] ==159530==
+[controller_manager-1] [INFO] [1712144331.546572266] [soem_slave_modules/trinamic_tmcm1610<controller_0>]: Got Module type from Hardware: 1610
+[controller_manager-1] [INFO] [1712144331.547833520] [soem_slave_modules/trinamic_tmcm1610<controller_0>]: Got Firmware Version from Hardware: 1.48
+[controller_manager-1] [INFO] [1712144331.557342256] [soem_slave_modules/trinamic_tmcm1610<controller_0>]: Driver FSM [Configuration] entering: Read Encoder Ticks
+[controller_manager-1] [INFO] [1712144331.558208569] [soem_slave_modules/trinamic_tmcm1610<controller_0>]: Requesting Encoder Ticks from Hardware; Sending MBX Request
+[controller_manager-1] [INFO] [1712144331.560488969] [soem_slave_modules/trinamic_tmcm1610<controller_1>]: Got Module type from Hardware: 1610
+--
+^C[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[controller_manager-1] [INFO] [1712144333.378443570] [rclcpp]: signal_handler(signum=2)
+[controller_manager-1] [DEBUG] [1712144333.380555247] [rclcpp]: signal_handler(): notifying deferred signal handler
+[controller_manager-1] [DEBUG] [1712144333.382717317] [rclcpp]: deferred_signal_handler(): woken up due to SIGINT/SIGTERM or uninstall
+[controller_manager-1] [DEBUG] [1712144333.383662928] [rclcpp]: deferred_signal_handler(): shutting down
+[controller_manager-1] [DEBUG] [1712144333.388598024] [rclcpp]: deferred_signal_handler(): shutting down rclcpp::Context @ 0x5b323c0, because it had shutdown_on_signal == true
+[controller_manager-1] [DEBUG] [1712144333.390185588] [rcl]: Shutting down ROS client library, for context at address: 0x5b32770
+[controller_manager-1] [DEBUG] [1712144333.398581910] [rcl]: Finalizing publisher
+[controller_manager-1] [DEBUG] [1712144333.407647075] [rcl]: Calling timer
+[controller_manager-1] [DEBUG] [1712144333.481327399] [rcl]: Publisher finalized
+[controller_manager-1] [DEBUG] [1712144333.483933832] [rcl]: Finalizing publisher
+--
+[controller_manager-1] [DEBUG] [1712144334.207126356] [rcl]: Publisher finalized
+[controller_manager-1] [DEBUG] [1712144334.207404391] [rcl]: Finalizing service
+[controller_manager-1] [DEBUG] [1712144334.210863692] [rcl]: Service finalized
+[controller_manager-1] [DEBUG] [1712144334.211440668] [rcl]: Finalizing node
+[controller_manager-1] [DEBUG] [1712144334.372906494] [rcl]: Node finalized
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== HEAP SUMMARY:
+[controller_manager-1] ==159530==     in use at exit: 236,082 bytes in 1,134 blocks
+[controller_manager-1] ==159530==   total heap usage: 114,314 allocs, 113,180 frees, 34,181,065 bytes allocated
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== LEAK SUMMARY:
+[controller_manager-1] ==159530==    definitely lost: 3,133 bytes in 22 blocks
+[controller_manager-1] ==159530==    indirectly lost: 155 bytes in 2 blocks
+[controller_manager-1] ==159530==      possibly lost: 800 bytes in 2 blocks
+[controller_manager-1] ==159530==    still reachable: 231,994 bytes in 1,108 blocks
+[controller_manager-1] ==159530==         suppressed: 0 bytes in 0 blocks
+[controller_manager-1] ==159530== Rerun with --leak-check=full to see details of leaked memory
+[controller_manager-1] ==159530==
+[controller_manager-1] ==159530== Use --track-origins=yes to see where uninitialised values come from
+[controller_manager-1] ==159530== For lists of detected and suppressed errors, rerun with: -s
+[controller_manager-1] ==159530== ERROR SUMMARY: 496 errors from 12 contexts (suppressed: 0 from 0)
+[INFO] [controller_manager-1]: process has finished cleanly [pid 159530]
