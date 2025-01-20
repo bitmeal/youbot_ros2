@@ -49,9 +49,17 @@ def generate_launch_description():
 
     robot_controllers = PathJoinSubstitution(
         [
+            FindPackageShare("youbot_ros2"),
+            "control",
             "KUKA-YouBot-arm_controllers.yaml",
         ]
     )
+
+    # robot_controllers = PathJoinSubstitution(
+    #     [
+    #         "KUKA-YouBot-arm_controllers.yaml",
+    #     ]
+    # )
 
     robot_description = {"robot_description": ParameterValue(robot_description_content, value_type=str)}
 

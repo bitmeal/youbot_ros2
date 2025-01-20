@@ -2,43 +2,43 @@
 # Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
-  arm_joint_1:
+  youbot_arm_joint_1:
     has_velocity_limits: true
 #    max_velocity: 1.57079632679
-    max_velocity: 1.5
+    max_velocity: 3.0
     has_acceleration_limits: true
     max_acceleration: 1.0
-  arm_joint_2:
+  youbot_arm_joint_2:
     has_velocity_limits: true
 #    max_velocity: 1.57079632679
-    max_velocity: 1.5
+    max_velocity: 3.0
     has_acceleration_limits: true
     max_acceleration: 1.0
-  arm_joint_3:
+  youbot_arm_joint_3:
     has_velocity_limits: true
 #    max_velocity: 1.57079632679
-    max_velocity: 1.5
+    max_velocity: 3.0
     has_acceleration_limits: true
     max_acceleration: 1.5
-  arm_joint_4:
+  youbot_arm_joint_4:
     has_velocity_limits: true
 #    max_velocity: 1.57079632679
-    max_velocity: 1.5
-    has_acceleration_limits: true
-    max_acceleration: 1.5
-  arm_joint_5:
-    has_velocity_limits: true
-#    max_velocity: 1.57079632679
-    max_velocity: 1.5
+    max_velocity: 3.0
     has_acceleration_limits: true
     max_acceleration: 2.0
-  gripper_finger_joint_l:
+  youbot_arm_joint_5:
     has_velocity_limits: true
-    max_velocity: 0.01
-    has_acceleration_limits: false
-    max_acceleration: 0
-  gripper_finger_joint_r:
-    has_velocity_limits: true
-    max_velocity: 0.01
-    has_acceleration_limits: false
-    max_acceleration: 0
+#    max_velocity: 1.57079632679
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+  # gripper_finger_joint_l:
+  #   has_velocity_limits: true
+  #   max_velocity: 0.01
+  #   has_acceleration_limits: false
+  #   max_acceleration: 0
+  # gripper_finger_joint_r:
+  #   has_velocity_limits: true
+  #   max_velocity: 0.01
+  #   has_acceleration_limits: false
+  #   max_acceleration: 0

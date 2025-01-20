@@ -1,0 +1,31 @@
+# MoveIt uses this configuration for controller management
+trajectory_execution:
+  allowed_execution_duration_scaling: 1.2
+  allowed_goal_duration_margin: 0.5
+  allowed_start_tolerance: 0.05
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - youbot_arm_controller
+    # - youbot_gripper_controller
+
+  youbot_arm_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - youbot_arm_joint_1
+      - youbot_arm_joint_2
+      - youbot_arm_joint_3
+      - youbot_arm_joint_4
+      - youbot_arm_joint_5
+
+  # youbot_gripper_controller:
+  #   action_ns: gripper_cmd
+  #   type: GripperCommand
+  #   default: true
+  #   joints:
+  #     - gripper_finger_joint_l
+  #     - gripper_finger_joint_r

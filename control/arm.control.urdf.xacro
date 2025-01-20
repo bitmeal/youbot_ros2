@@ -4,7 +4,7 @@
 
     <xacro:macro name="youbot_arm_control" params="name ec_interface ec_cycle_us ec_timeout_pd_us ec_timeout_mbxrx_us ec_timeout_mbxtx_us diagnostics_cycle_ms">
 
-        <ros2_control name="youbot_manipulator" type="system">
+        <ros2_control name="youbot_arm" type="system">
 
             <!-- hardware interface and bus -->
             <hardware>
@@ -31,36 +31,57 @@
                     <position>2</position>
                     <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                     <param name="torque_constant">0.0335</param>
+                    <param name="homing_velocity_rpm">100</param>
                     <param name="homing_current_limit">1.0</param>
+                    <param name="halt_axis_vel_eps_rpm">1</param>
+                    <param name="zero_axis_pos_eps_ticks">5</param>
+                    <param name="homing_backoff_rev">-0.2</param>
                 </ec_slave>
-
                 <ec_slave name="${name}_controller_2">
                     <alias>0</alias>
                     <position>3</position>
                     <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                     <param name="torque_constant">0.0335</param>
+                    <param name="homing_velocity_rpm">100</param>
                     <param name="homing_current_limit">0.5</param>
+                    <param name="halt_axis_vel_eps_rpm">1</param>
+                    <param name="zero_axis_pos_eps_ticks">10</param>
+                    <param name="homing_backoff_rev">-0.1</param>
+                    <!-- <param name="homing_backoff_rev">0.0</param> -->
                 </ec_slave>
                 <ec_slave name="${name}_controller_3">
                     <alias>0</alias>
                     <position>4</position>
                     <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                     <param name="torque_constant">0.0335</param>
-                    <param name="homing_current_limit">1.0</param>
+                    <param name="homing_velocity_rpm">100</param>
+                    <param name="homing_current_limit">0.5</param>
+                    <param name="halt_axis_vel_eps_rpm">1</param>
+                    <param name="zero_axis_pos_eps_ticks">10</param>
+                    <param name="homing_backoff_rev">-0.1</param>
+                    <!-- <param name="homing_backoff_rev">0.0</param> -->
                 </ec_slave>
                 <ec_slave name="${name}_controller_4">
                     <alias>0</alias>
                     <position>5</position>
                     <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                     <param name="torque_constant">0.051</param>
-                    <param name="homing_current_limit">0.25</param>
+                    <param name="homing_velocity_rpm">100</param>
+                    <param name="homing_current_limit">0.2</param>
+                    <param name="halt_axis_vel_eps_rpm">1</param>
+                    <param name="zero_axis_pos_eps_ticks">5</param>
+                    <param name="homing_backoff_rev">-0.05</param>
                 </ec_slave>
                 <ec_slave name="${name}_controller_5">
                     <alias>0</alias>
                     <position>6</position>
                     <plugin>soem_slave_modules/trinamic_tmcm1610</plugin>
                     <param name="torque_constant">0.049</param>
-                    <param name="homing_current_limit">0.25</param>
+                    <param name="homing_velocity_rpm">100</param>
+                    <param name="homing_current_limit">0.2</param>
+                    <param name="halt_axis_vel_eps_rpm">1</param>
+                    <param name="zero_axis_pos_eps_ticks">5</param>
+                    <param name="homing_backoff_rev">-0.025</param>
                 </ec_slave>
                 
             </hardware>
