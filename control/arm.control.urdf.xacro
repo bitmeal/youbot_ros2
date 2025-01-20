@@ -4,7 +4,7 @@
 
     <xacro:macro name="youbot_arm_control" params="name ec_interface ec_cycle_us ec_timeout_pd_us ec_timeout_mbxrx_us ec_timeout_mbxtx_us diagnostics_cycle_ms">
 
-        <ros2_control name="youbot_manipulator" type="system">
+        <ros2_control name="youbot_arm" type="system">
 
             <!-- hardware interface and bus -->
             <hardware>

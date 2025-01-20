@@ -22,7 +22,17 @@ install(
     DESTINATION share/${PROJECT_NAME}/description/urdf
 )
 
-## EXPORTS
+install(
+    DIRECTORY config/
+    DESTINATION share/${PROJECT_NAME}/config
+)
+
+install(
+    DIRECTORY launch/
+    DESTINATION share/${PROJECT_NAME}/launch
+)
+
+# EXPORTS
 ament_export_dependencies(
     soem_driver_ros2
 )

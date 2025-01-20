@@ -3,7 +3,7 @@
        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://www.ros.org/wiki/xacro/#interface"
-       name="youbot" >
+       name="youbot_arm" >
   
   <!-- The following included files set up definitions of parts of the robot body -->
   <!-- misc common stuff? -->
@@ -32,7 +32,7 @@
        is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
   <xacro:youbot_arm_control
-    name="arm"
+    name="youbot_arm"
     ec_interface="enx00e04c05e466"
     ec_cycle_us="1000"
     ec_timeout_pd_us="500"
@@ -50,7 +50,7 @@
     </inertial>
   </link>
   
-  <xacro:youbot_arm name="arm" parent="base_link">
+  <xacro:youbot_arm name="youbot_arm" parent="base_link">
     <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
     <origin xyz="0.143 0 0.046" rpy="0 0 0" />
   </xacro:youbot_arm>
