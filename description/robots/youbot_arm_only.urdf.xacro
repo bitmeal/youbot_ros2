@@ -4,6 +4,7 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://www.ros.org/wiki/xacro/#interface"
        name="youbot_arm" >
+       name="youbot_arm" >
   
   <!-- The following included files set up definitions of parts of the robot body -->
   <!-- misc common stuff? -->

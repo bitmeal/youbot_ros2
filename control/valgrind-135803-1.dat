@@ -1,6 +1,0 @@
-==135803== Memcheck, a memory error detector
-==135803== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==135803== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==135803== Command: /home/edgelord/ros2_ws/install/controller_manager/lib/controller_manager/ros2_control_node --ros-args --log-level debug --ros-args --params-file /tmp/launch_params_qj3pzfkt --params-file TMCM-1610_single_joint_mechanism_controllers.yaml
-==135803== Parent PID: 135799
-==135803== 
